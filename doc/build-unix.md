@@ -1,4 +1,4 @@
-Copyright (c) 2009-2013 Bitcoin Developers
+Copyright (c) 2009-2013 Bitcoin Developers (c) 2014-2015 Vertcoin Developers
 
 Distributed under the MIT/X11 software license, see the accompanying
 file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -120,7 +120,7 @@ To compile Vertcoin with GNU make:
 
 Notes
 -----
-The release is built with GCC and then "strip bitcoind" to strip the debug
+The release is built with GCC and then "strip vertcoind" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -178,7 +178,7 @@ exploit even if a vulnerability is found, you can take the following measures:
 
 * Non-executable Stack
     If the stack is executable then trivial stack based buffer overflow exploits are possible if
-    vulnerable buffers are found. By default, bitcoin should be built with a non-executable stack
+    vulnerable buffers are found. By default, vertcoin should be built with a non-executable stack
     but if one of the libraries it uses asks for an executable stack or someone makes a mistake
     and uses a compiler extension which requires an executable stack, it will silently build an
     executable without the non-executable stack protection.
