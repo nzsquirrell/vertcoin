@@ -17,6 +17,8 @@ Vertcoin is a lite version of Bitcoin using Lyra2RE as a proof-of-work algorithm
  - 50 coins per block
  - Every block to retarget difficulty with Kimotos Gravity Well algorithm
 
+Vertcoin is also the first cryptocurrency to implement Stealth Addresses, a new technology for providing privacy on the public ledger.
+
 For more information, as well as an immediately useable, binary version of
 the Vertcoin client sofware, see http://www.vertcoin.org.
 
