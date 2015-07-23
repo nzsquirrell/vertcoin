@@ -1291,7 +1291,7 @@ class CBlockHeader
 {
 public:
     // header
-    static const int CURRENT_VERSION=3;
+    static const int CURRENT_VERSION=4;
     int LastHeight;
     int nVersion;
     uint256 hashPrevBlock;
@@ -1380,7 +1380,11 @@ public:
     uint256 GetPoWHash(int height) const
     {
         uint256 thash;
-        if((fTestNet && height >= 100) || height >= 208301)
+        if((fTestNet && height >= 127000) || height >= 347000)
+        {
+        	lyra2re2_hash(BEGIN(nVersion), BEGIN(thash));
+        }
+        else if((fTestNet && height >= 100) || height >= 208301)
         {
             lyra2re_hash(BEGIN(nVersion), BEGIN(thash));
         }

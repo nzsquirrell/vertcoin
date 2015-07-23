@@ -4918,13 +4918,16 @@ void static VertcoinMiner(CWallet *pwallet)
 
             uint256 thash;
 
-            /*printf("nTime -> %d", pblock->nTime);
-            printf("scrypt_scratpad_size_current_block -> %ld", sizeof(scrypt_scratpad_size_current_block));
-            printf("scratchpad -> %d", sizeof(scratchpad));*/
-
             loop
             {
-                lyra2re_hash(BEGIN(pblock->nVersion), BEGIN(thash));
+                if((fTestNet && pindexPrev->nHeight+1 >= 127000) || pindexPrev->nHeight+1 >= 347000)
+                {
+                    lyra2re2_hash(BEGIN(pblock->nVersion), BEGIN(thash));
+                }
+                else
+                {
+                    lyra2re_hash(BEGIN(pblock->nVersion), BEGIN(thash));
+                }
 
                 if (thash <= hashTarget)
                 {
