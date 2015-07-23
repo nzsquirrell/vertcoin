@@ -5,7 +5,7 @@ http://www.vertcoin.org
 
 Copyright (c) 2009-2013 Bitcoin Developers
 Copyright (c) 2011-2013 Litecoin Developers
-Copyright (c) 2014 Vertcoin Developers
+Copyright (c) 2014-2015 Vertcoin Developers
 
 What is Vertcoin?
 ----------------
@@ -16,6 +16,8 @@ Vertcoin is a lite version of Bitcoin using Lyra2RE as a proof-of-work algorithm
  - ~84 million total coins
  - 50 coins per block
  - Every block to retarget difficulty with Kimotos Gravity Well algorithm
+
+Vertcoin is also the first cryptocurrency to implement Stealth Addresses, a new technology for providing privacy on the public ledger.
 
 For more information, as well as an immediately useable, binary version of
 the Vertcoin client sofware, see http://www.vertcoin.org.
@@ -46,6 +48,21 @@ controversial.
 The `master` branch is regularly built and tested, but is not guaranteed to be
 completely stable. [Tags](https://github.com/vertcoin/vertcoin/tags) are created
 regularly to indicate new official, stable release versions of Vertcoin.
+
+Building
+--------
+
+Environment specific building instructions are located in the following directories and files:
+
+vertcoind (headless wallet):
+
+* doc/build-msw.md (Windows)
+* doc/build-osx.md (Mac OS X)
+* doc/build-unix.md (Unix)
+
+vertcoin-qt (wallet with GUI):
+
+* doc/readme-qt.rst
 
 Testing
 -------
