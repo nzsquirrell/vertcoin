@@ -324,7 +324,7 @@ Value getwork(const Array& params, bool fHelp)
     typedef map<uint256, pair<CBlock*, CScript> > mapNewBlock_t;
     static mapNewBlock_t mapNewBlock;    // FIXME: thread safety
     static vector<CBlockTemplate*> vNewBlockTemplate;
-
+	
     if (params.size() == 0)
     {
         // Update block
@@ -373,8 +373,8 @@ Value getwork(const Array& params, bool fHelp)
 
         // Save
         mapNewBlock[pblock->hashMerkleRoot] = make_pair(pblock, pblock->vtx[0].vin[0].scriptSig);
-
-        // Pre-build hash buffers
+		
+		// Pre-build hash buffers
         char pmidstate[32];
         char pdata[128];
         char phash1[64];
@@ -393,19 +393,30 @@ Value getwork(const Array& params, bool fHelp)
     {
         // Parse parameters
         vector<unsigned char> vchData = ParseHex(params[0].get_str());
-        if (vchData.size() != 128)
-            throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid parameter");
-        CBlock* pdata = (CBlock*)&vchData[0];
+		
+		//FIXME: LastHeight is in the block header
+		for(int i = 0; i < 4; i++)
+		{
+			vchData.insert(vchData.begin(), 0);
+		}
 
+        if (vchData.size() != 132)
+		{
+            throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid parameter");
+        }
+		CBlock* pdata = (CBlock*)&vchData[0];
         // Byte reverse
         for (int i = 0; i < 128/4; i++)
             ((unsigned int*)pdata)[i] = ByteReverse(((unsigned int*)pdata)[i]);
-
+		
         // Get saved block
-        if (!mapNewBlock.count(pdata->hashMerkleRoot))
+        if(!mapNewBlock.count(pdata->hashMerkleRoot))
+		{
             return false;
-        CBlock* pblock = mapNewBlock[pdata->hashMerkleRoot].first;
-
+        }
+		CBlock* pblock = mapNewBlock[pdata->hashMerkleRoot].first;
+		
+		
         pblock->nTime = pdata->nTime;
         pblock->nNonce = pdata->nNonce;
         pblock->vtx[0].vin[0].scriptSig = mapNewBlock[pdata->hashMerkleRoot].second;
