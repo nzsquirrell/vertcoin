@@ -5,7 +5,7 @@ SetCompressor /SOLID lzma
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 0.9.0.2
+!define VERSION 0.10.0.0
 !define COMPANY "Vertcoin project"
 !define URL https://www.vertcoin.org/
 
