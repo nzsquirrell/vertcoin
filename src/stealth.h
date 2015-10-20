@@ -156,14 +156,14 @@ public:
         ctx = secp256k1_context_create(SECP256K1_CONTEXT_SIGN | SECP256K1_CONTEXT_VERIFY);
         init_done_ = true;
     }
-    secp256k1_context_t* getContext()
+    secp256k1_context* getContext()
     {
 	return ctx;
     }
 
 private:
     bool init_done_;
-    secp256k1_context_t* ctx;
+    secp256k1_context* ctx;
 };
 
 static init_singleton init;
