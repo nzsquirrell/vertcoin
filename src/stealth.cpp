@@ -149,8 +149,7 @@ bool ec_tweak_add(ec_point& a, const ec_secret& b)
     return secp256k1_ec_pubkey_tweak_add(init.getContext(), a.data(), a.size(), b.data());
 }
 
-ec_point secret_to_public_key(const ec_secret& secret,
-    bool compressed)
+ec_point secret_to_public_key(const ec_secret& secret, bool compressed)
 {
     init.init();
     size_t size = ec_uncompressed_size;
