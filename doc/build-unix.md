@@ -14,11 +14,12 @@ To Build
     cd src/
     make -f makefile.unix		# Headless vertcoin
 
-See readme-qt.rst for instructions on building Vertcoin-Qt, the graphical user interface.
+See readme-qt.rst for instructions on building vertcoin-qt, the graphical user interface.
 
 Dependencies
 ---------------------
 
+<<<<<<< HEAD
  Library       |Purpose           |Description
  --------------|------------------|---------------------------------------------------------
  libssl        |SSL Support       |Secure communications
@@ -26,6 +27,15 @@ Dependencies
  libboost      |Boost             |C++ Library
  miniupnpc     |UPnP Support      |Optional firewall-jumping support
  libsecp256k1EC| Operations	   |Optimized C library for EC operations on curve secp256k1
+=======
+ |Library       |Purpose           |Description						     |				
+ |--------------|------------------|---------------------------------------------------------|
+ |libssl        |SSL Support       |Secure communications				     |
+ |libdb4.8      |Berkeley DB       |Blockchain & wallet storage				     |
+ |libboost      |Boost             |C++ Library						     |
+ |miniupnpc     |UPnP Support      |Optional firewall-jumping support			     |
+ |libsecp256k1EC|EC Operations	   |Optimized C library for EC operations on curve secp256k1.|
+>>>>>>> 83de6df98d864d5c0e002903f75e8e8aa07b81b1
 
 [miniupnpc](http://miniupnp.free.fr/) may be used for UPnP port mapping.  It can be downloaded from [here](
 http://miniupnp.tuxfamily.org/files/).  UPnP support is compiled in and
@@ -81,9 +91,7 @@ for other Ubuntu & Debian:
 libsecp256k1:
 
     sudo apt-get install libgmp-dev
-    git clone https://github.com/bitcoin/secp256k1.git
-    cd secp256k1
-    git checkout 4c63780710351ffcc52341497e3ca0e518fbad79
+    cd src/secp256k1
     ./autogen.sh
     ./configure
     make
