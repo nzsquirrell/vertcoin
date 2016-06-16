@@ -3550,6 +3550,24 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
         if (!vRecv.empty()) {
             vRecv >> pfrom->strSubVer;
             pfrom->cleanSubVer = SanitizeString(pfrom->strSubVer);
+            
+            if (
+                (pfrom->cleanSubVer == "/Satoshi:0.8.6.2/") ||
+                (pfrom->cleanSubVer == "/Satoshi:0.8.6.3/") ||
+                (pfrom->cleanSubVer == "/Satoshi:0.8.6.4/") ||
+                (pfrom->cleanSubVer == "/Satoshi:0.8.7.1/") ||
+                (pfrom->cleanSubVer == "/Satoshi:0.8.7.2/") ||
+                (pfrom->cleanSubVer == "/Satoshi:0.8.7.3/") ||
+                (pfrom->cleanSubVer == "/Satoshi:0.9.0/") ||
+                (pfrom->cleanSubVer == "/Satoshi:0.9.0.1/") ||
+                (pfrom->cleanSubVer == "/Satoshi:0.9.0.2/")
+            )
+            {
+                // disconnect from peers older than this client version
+                printf("partner %s using obsolete client sub version %s; disconnecting\n", pfrom->addr.ToString().c_str(), pfrom->cleanSubVer.c_str());
+                pfrom->fDisconnect = true;
+                return false;
+            }
         }
         if (!vRecv.empty())
             vRecv >> pfrom->nStartingHeight;
