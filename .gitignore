@@ -14,9 +14,13 @@ src/test_vertcoin
 # Compilation and Qt preprocessor part
 *.qm
 Makefile
+Makefile.Debug
+Makefile.Release
 vertcoin-qt
 Vertcoin-Qt.app
-
+object_script.vertcoin-qt.Debug
+object_script.vertcoin-qt.Release
+release
 # Unit-tests
 Makefile.test
 vertcoin-qt_test
